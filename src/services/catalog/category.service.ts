@@ -20,15 +20,15 @@ export const productCategoryService = {
   },
 
   getById(id: string) {
-    return http.get<ProductCategoryResponse>(`/api/ProductCategories/${id}`);
+    return http.get<ApiResponse<ProductCategoryResponse>>(`/api/ProductCategories/${id}`);
   },
 
   create(data: CreateProductCategoryRequest) {
-    return http.post<ProductCategoryResponse>("/api/ProductCategories", data);
+    return http.post<ApiResponse<ProductCategoryResponse>>("/api/ProductCategories", data);
   },
 
   update(id: string, data: UpdateProductCategoryRequest) {
-    return http.put<ProductCategoryResponse>(`/api/ProductCategories/${id}`, data);
+    return http.put<ApiResponse<ProductCategoryResponse>>(`/api/ProductCategories/${id}`, data);
   },
 
   delete(id: string) {
@@ -49,19 +49,19 @@ export const ingredientCategoryService = {
   },
 
   getById(id: string) {
-    return http.get<IngredientCategoryResponse>(`/api/IngredientCategories/${id}`);
+    return http.get<ApiResponse<IngredientCategoryResponse>>(`/api/IngredientCategories/${id}`);
   },
 
   getByName(name: string) {
-    return http.get<IngredientCategoryResponse>(`/api/IngredientCategories/by-name/${encodeURIComponent(name)}`);
+    return http.get<ApiResponse<IngredientCategoryResponse>>(`/api/IngredientCategories/by-name/${encodeURIComponent(name)}`);
   },
 
   create(data: CreateIngredientCategoryRequest) {
-    return http.post<IngredientCategoryResponse>("/api/IngredientCategories", data);
+    return http.post<ApiResponse<IngredientCategoryResponse>>("/api/IngredientCategories", data);
   },
 
   update(id: string, data: UpdateIngredientCategoryRequest) {
-    return http.put<IngredientCategoryResponse>(`/api/IngredientCategories/${id}`, data);
+    return http.put<ApiResponse<IngredientCategoryResponse>>(`/api/IngredientCategories/${id}`, data);
   },
 
   delete(id: string) {

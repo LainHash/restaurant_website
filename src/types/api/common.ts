@@ -11,9 +11,9 @@ export interface PaginationQuery {
 }
 
 export interface PaginatedResponse<T> {
-  items: T[];
-  totalCount: number;
-  page: number;
+  data: T[];
+  totalItems: number;
+  indexPage: number;
   pageSize: number;
   totalPages?: number;
   hasNextPage?: boolean;
