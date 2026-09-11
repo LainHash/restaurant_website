@@ -1,4 +1,4 @@
-import { SortDirection, SortField } from "./common";
+import { SortDirection, SortField } from "../common";
 import { AreaResponse } from "./area";
 
 export interface BranchFilterParams {

@@ -1,4 +1,4 @@
-import { SortDirection, SortField } from "./common";
+import { SortDirection, SortField } from "../common";
 
 export interface InvoiceResponse {
   id: string;

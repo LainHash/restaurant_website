@@ -1,4 +1,4 @@
-import { SortDirection, SortField } from "./common";
+import { SortDirection, SortField } from "../common";
 
 export interface CreateProductCategoryRequest {
   name?: string | null;

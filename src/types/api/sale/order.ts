@@ -1,4 +1,4 @@
-import { SortDirection, SortField } from "./common";
+import { SortDirection, SortField } from "../common";
 
 export type OrderType = "DineIn" | "TakeAway" | "Delivery";
 

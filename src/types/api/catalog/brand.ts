@@ -1,27 +1,25 @@
-import { SortDirection, SortField } from "./common";
-import { PositionResponse } from "./position";
+import { SortDirection, SortField } from "../common";
 
-export interface CreateDepartmentRequest {
+export interface CreateBrandRequest {
   name?: string | null;
   description?: string | null;
 }
 
-export interface UpdateDepartmentRequest {
+export interface UpdateBrandRequest {
   name?: string | null;
   description?: string | null;
 }
 
-export interface DepartmentResponse {
+export interface BrandResponse {
   id: string;
   name?: string;
   description?: string;
   isDeleted?: boolean;
-  positions?: PositionResponse[];
   createdAt?: string;
   updatedAt?: string;
 }
 
-export interface DepartmentFilterParams {
+export interface BrandFilterParams {
   Keyword?: string;
   SortField?: SortField;
   Direction?: SortDirection;

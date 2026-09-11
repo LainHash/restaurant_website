@@ -1,5 +1,5 @@
 import { RestaurantTableResponse } from "./table";
-import { SortDirection, SortField } from "./common";
+import { SortDirection, SortField } from "../common";
 
 export interface CreateAreaRequest {
   branchId?: string;
