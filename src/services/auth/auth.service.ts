@@ -13,7 +13,7 @@ import {
 
 export const authService = {
   login(data: LoginRequest) {
-    return http.post<AuthResponse>("/api/Authentication/login", data);
+    return http.post<ApiResponse<AuthResponse>>("/api/Authentication/login", data);
   },
 
   register(data: RegisterRequest) {

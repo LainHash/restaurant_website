@@ -17,11 +17,11 @@ export const discountService = {
   },
 
   create(data: CreateDiscountRequest) {
-    return http.post<DiscountResponse>("/api/Discounts", data);
+    return http.post<ApiResponse<DiscountResponse>>("/api/Discounts", data);
   },
 
   update(id: string, data: UpdateDiscountRequest) {
-    return http.put<DiscountResponse>(`/api/Discounts/${id}`, data);
+    return http.put<ApiResponse<DiscountResponse>>(`/api/Discounts/${id}`, data);
   },
 
   delete(id: string) {

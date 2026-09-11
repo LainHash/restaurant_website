@@ -3,6 +3,7 @@ import {
   InvoiceFilterParams,
   InvoiceResponse,
   PaginatedResponse,
+  ApiResponse,
 } from "@/types/api";
 
 export const invoiceService = {
@@ -11,6 +12,6 @@ export const invoiceService = {
   },
 
   getById(id: string) {
-    return http.get<InvoiceResponse>(`/api/Invoices/${id}`);
+    return http.get<ApiResponse<InvoiceResponse>>(`/api/Invoices/${id}`);
   },
 };

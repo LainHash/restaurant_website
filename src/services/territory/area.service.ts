@@ -15,15 +15,15 @@ export const areaService = {
   },
 
   getById(id: string) {
-    return http.get<AreaResponse>(`/api/Areas/${id}`);
+    return http.get<ApiResponse<AreaResponse>>(`/api/Areas/${id}`);
   },
 
   create(data: CreateAreaRequest) {
-    return http.post<AreaResponse>("/api/Areas", data);
+    return http.post<ApiResponse<AreaResponse>>("/api/Areas", data);
   },
 
   update(id: string, data: UpdateAreaRequest) {
-    return http.put<AreaResponse>(`/api/Areas/${id}`, data);
+    return http.put<ApiResponse<AreaResponse>>(`/api/Areas/${id}`, data);
   },
 
   delete(id: string) {
@@ -35,6 +35,6 @@ export const areaService = {
   },
 
   getTables(id: string) {
-    return http.get<RestaurantTableResponse[]>(`/api/Areas/${id}/tables`);
+    return http.get<ApiResponse<RestaurantTableResponse[]>>(`/api/Areas/${id}/tables`);
   },
 };

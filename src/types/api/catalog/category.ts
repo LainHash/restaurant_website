@@ -41,7 +41,7 @@ export interface IngredientCategoryResponse {
 export interface CategoryFilterParams {
   Keyword?: string;
   SortField?: SortField;
-  Direction?: SortDirection;
+  SortDirection?: SortDirection;
   Page?: number;
   PageSize?: number;
 }

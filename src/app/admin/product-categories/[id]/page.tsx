@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useProductCategory } from "@/hooks/catalog/productCategories/useProductCategory";
+import { useProductCategory } from "@/hooks/catalog/useProductCategory";
 
 function formatDate(value?: string) {
   if (!value) return "Chưa cập nhật";

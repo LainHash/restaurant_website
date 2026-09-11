@@ -14,15 +14,15 @@ export const orderService = {
   },
 
   getById(id: string) {
-    return http.get<OrderResponse>(`/api/Orders/${id}`);
+    return http.get<ApiResponse<OrderResponse>>(`/api/Orders/${id}`);
   },
 
   create(data: CreateOrderRequest) {
-    return http.post<OrderResponse>("/api/Orders", data);
+    return http.post<ApiResponse<OrderResponse>>("/api/Orders", data);
   },
 
   getInvoice(id: string) {
-    return http.get<InvoiceResponse>(`/api/Orders/${id}/invoice`);
+    return http.get<ApiResponse<InvoiceResponse>>(`/api/Orders/${id}/invoice`);
   },
 
   // Order Details status workflow actions

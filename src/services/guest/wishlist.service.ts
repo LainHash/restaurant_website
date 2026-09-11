@@ -8,7 +8,7 @@ import {
 
 export const wishlistService = {
   getWishlist() {
-    return http.get<WishlistResponse>("/api/Wishlists");
+    return http.get<ApiResponse<WishlistResponse>>("/api/Wishlists");
   },
 
   addItem(data: AddWishlistItemRequest) {

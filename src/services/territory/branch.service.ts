@@ -5,6 +5,7 @@ import {
   BranchStockItem,
   AreaResponse,
   PaginatedResponse,
+  ApiResponse,
 } from "@/types/api";
 
 export const branchService = {
@@ -13,10 +14,10 @@ export const branchService = {
   },
 
   getStockList(id: string) {
-    return http.get<BranchStockItem[]>(`/api/Branches/${id}/stock-list`);
+    return http.get<ApiResponse<BranchStockItem[]>>(`/api/Branches/${id}/stock-list`);
   },
 
   getAreas(id: string) {
-    return http.get<AreaResponse[]>(`/api/Branches/${id}/areas`);
+    return http.get<ApiResponse<AreaResponse[]>>(`/api/Branches/${id}/areas`);
   },
 };

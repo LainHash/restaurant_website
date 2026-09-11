@@ -5,6 +5,7 @@ import {
   RestaurantTableResponse,
   TableFilterParams,
   PaginatedResponse,
+  ApiResponse,
 } from "@/types/api";
 
 export const tableService = {
@@ -16,14 +17,14 @@ export const tableService = {
   },
 
   getById(id: string) {
-    return http.get<RestaurantTableResponse>(`/api/RestaurantTables/${id}`);
+    return http.get<ApiResponse<RestaurantTableResponse>>(`/api/RestaurantTables/${id}`);
   },
 
   create(data: CreateRestaurantTableRequest) {
-    return http.post<RestaurantTableResponse>("/api/RestaurantTables", data);
+    return http.post<ApiResponse<RestaurantTableResponse>>("/api/RestaurantTables", data);
   },
 
   update(id: string, data: UpdateRestaurantTableRequest) {
-    return http.put<RestaurantTableResponse>(`/api/RestaurantTables/${id}`, data);
+    return http.put<ApiResponse<RestaurantTableResponse>>(`/api/RestaurantTables/${id}`, data);
   },
 };

@@ -4,20 +4,21 @@ import {
   CustomerResponse,
   CustomerWallet,
   ClaimDiscountRequest,
+  PaginatedResponse,
   ApiResponse,
 } from "@/types/api";
 
 export const customerService = {
   getAll(params?: GetAllCustomersQuery) {
-    return http.get<CustomerResponse[]>("/api/Customers", params as Record<string, unknown>);
+    return http.get<PaginatedResponse<CustomerResponse>>("/api/Customers", params as Record<string, unknown>);
   },
 
   getById(id: string) {
-    return http.get<CustomerResponse>(`/api/Customers/${id}`);
+    return http.get<ApiResponse<CustomerResponse>>(`/api/Customers/${id}`);
   },
 
   getCurrentUser() {
-    return http.get<CustomerResponse>("/api/Customers/user");
+    return http.get<ApiResponse<CustomerResponse>>("/api/Customers/user");
   },
 
   uploadUserImage(file: File) {
@@ -27,7 +28,7 @@ export const customerService = {
   },
 
   getUserWallet() {
-    return http.get<CustomerWallet>("/api/Customers/user/wallet");
+    return http.get<ApiResponse<CustomerWallet>>("/api/Customers/user/wallet");
   },
 
   claimDiscount(data: ClaimDiscountRequest) {

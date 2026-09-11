@@ -19,15 +19,15 @@ export const ingredientService = {
   },
 
   getById(id: string) {
-    return http.get<IngredientResponse>(`/api/Ingredients/${id}`);
+    return http.get<ApiResponse<IngredientResponse>>(`/api/Ingredients/${id}`);
   },
 
   create(data: CreateIngredientRequest) {
-    return http.post<IngredientResponse>("/api/Ingredients", data);
+    return http.post<ApiResponse<IngredientResponse>>("/api/Ingredients", data);
   },
 
   update(id: string, data: UpdateIngredientRequest) {
-    return http.put<IngredientResponse>(`/api/Ingredients/${id}`, data);
+    return http.put<ApiResponse<IngredientResponse>>(`/api/Ingredients/${id}`, data);
   },
 
   delete(id: string) {
@@ -39,7 +39,7 @@ export const ingredientService = {
   },
 
   getStockList(id: string) {
-    return http.get<IngredientStockResponse[]>(`/api/Ingredients/${id}/stock-list`);
+    return http.get<ApiResponse<IngredientStockResponse[]>>(`/api/Ingredients/${id}/stock-list`);
   },
 
   updateBranchQuantity(ingredientId: string, branchId: string, data: UpdateIngredientStockQuantityRequest) {

@@ -18,15 +18,15 @@ export const productService = {
   },
 
   getById(id: string) {
-    return http.get<ProductResponse>(`/api/Products/${id}`);
+    return http.get<ApiResponse<ProductResponse>>(`/api/Products/${id}`);
   },
 
   create(data: CreateProductRequest) {
-    return http.post<ProductResponse>("/api/Products", data);
+    return http.post<ApiResponse<ProductResponse>>("/api/Products", data);
   },
 
   update(id: string, data: UpdateProductRequest) {
-    return http.put<ProductResponse>(`/api/Products/${id}`, data);
+    return http.put<ApiResponse<ProductResponse>>(`/api/Products/${id}`, data);
   },
 
   delete(id: string) {
@@ -38,7 +38,7 @@ export const productService = {
   },
 
   getStockList(id: string) {
-    return http.get<ProductStockResponse[]>(`/api/Products/${id}/stock-list`);
+    return http.get<ApiResponse<ProductStockResponse[]>>(`/api/Products/${id}/stock-list`);
   },
 
   updateBranchQuantity(productId: string, branchId: string, data: UpdateProductStockQuantityRequest) {
@@ -46,7 +46,7 @@ export const productService = {
   },
 
   getImages(id: string) {
-    return http.get<ProductImage[]>(`/api/Products/${id}/images`);
+    return http.get<ApiResponse<ProductImage[]>>(`/api/Products/${id}/images`);
   },
 
   uploadImage(id: string, file: File, altText?: string, isPrimary: boolean = false) {
@@ -54,10 +54,10 @@ export const productService = {
     formData.append("file", file);
     if (altText) formData.append("AltText", altText);
     formData.append("IsPrimary", String(isPrimary));
-    return http.upload<ProductImage>(`/api/Products/${id}/images`, formData);
+    return http.upload<ApiResponse<ProductImage>>(`/api/Products/${id}/images`, formData);
   },
 
   getRecipeList(id: string) {
-    return http.get<RecipeResponse[]>(`/api/Products/${id}/recipe-list`);
+    return http.get<ApiResponse<RecipeResponse[]>>(`/api/Products/${id}/recipe-list`);
   },
 };

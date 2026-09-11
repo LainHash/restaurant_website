@@ -4,24 +4,25 @@ import {
   UpdateRoleRequest,
   GetAllRolesQuery,
   RoleResponse,
+  PaginatedResponse,
   ApiResponse,
 } from "@/types/api";
 
 export const roleService = {
   getAll(params?: GetAllRolesQuery) {
-    return http.get<RoleResponse[]>("/api/Roles", params as Record<string, unknown>);
+    return http.get<PaginatedResponse<RoleResponse>>("/api/Roles", params as Record<string, unknown>);
   },
 
   getById(id: string) {
-    return http.get<RoleResponse>(`/api/Roles/${id}`);
+    return http.get<ApiResponse<RoleResponse>>(`/api/Roles/${id}`);
   },
 
   create(data: CreateRoleRequest) {
-    return http.post<RoleResponse>("/api/Roles", data);
+    return http.post<ApiResponse<RoleResponse>>("/api/Roles", data);
   },
 
   update(id: string, data: UpdateRoleRequest) {
-    return http.put<RoleResponse>(`/api/Roles/${id}`, data);
+    return http.put<ApiResponse<RoleResponse>>(`/api/Roles/${id}`, data);
   },
 
   delete(id: string) {

@@ -43,7 +43,7 @@ export function useProductCategories(params?: CategoryFilterParams) {
     params?.Page,
     params?.PageSize,
     params?.SortField,
-    params?.Direction,
+    params?.SortDirection,
   ]);
 
   useEffect(() => {

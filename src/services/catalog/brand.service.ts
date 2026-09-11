@@ -14,15 +14,15 @@ export const brandService = {
   },
 
   getById(id: string) {
-    return http.get<BrandResponse>(`/api/Brands/${id}`);
+    return http.get<ApiResponse<BrandResponse>>(`/api/Brands/${id}`);
   },
 
   create(data: CreateBrandRequest) {
-    return http.post<BrandResponse>("/api/Brands", data);
+    return http.post<ApiResponse<BrandResponse>>("/api/Brands", data);
   },
 
   update(id: string, data: UpdateBrandRequest) {
-    return http.put<BrandResponse>(`/api/Brands/${id}`, data);
+    return http.put<ApiResponse<BrandResponse>>(`/api/Brands/${id}`, data);
   },
 
   delete(id: string) {

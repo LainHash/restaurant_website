@@ -8,7 +8,7 @@ import {
 
 export const cartService = {
   getCart() {
-    return http.get<CartResponse>("/api/Carts");
+    return http.get<ApiResponse<CartResponse>>("/api/Carts");
   },
 
   addItem(data: AddCartItemRequest) {

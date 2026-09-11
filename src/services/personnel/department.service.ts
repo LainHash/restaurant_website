@@ -18,19 +18,19 @@ export const departmentService = {
   },
 
   getById(id: string) {
-    return http.get<DepartmentResponse>(`/api/Departments/${id}`);
+    return http.get<ApiResponse<DepartmentResponse>>(`/api/Departments/${id}`);
   },
 
   getByName(name: string) {
-    return http.get<DepartmentResponse>(`/api/Departments/by-name/${encodeURIComponent(name)}`);
+    return http.get<ApiResponse<DepartmentResponse>>(`/api/Departments/by-name/${encodeURIComponent(name)}`);
   },
 
   create(data: CreateDepartmentRequest) {
-    return http.post<DepartmentResponse>("/api/Departments", data);
+    return http.post<ApiResponse<DepartmentResponse>>("/api/Departments", data);
   },
 
   update(id: string, data: UpdateDepartmentRequest) {
-    return http.put<DepartmentResponse>(`/api/Departments/${id}`, data);
+    return http.put<ApiResponse<DepartmentResponse>>(`/api/Departments/${id}`, data);
   },
 
   delete(id: string) {
@@ -42,6 +42,6 @@ export const departmentService = {
   },
 
   getPositions(id: string) {
-    return http.get<PositionResponse[]>(`/api/Departments/${id}/positions`);
+    return http.get<ApiResponse<PositionResponse[]>>(`/api/Departments/${id}/positions`);
   },
 };
