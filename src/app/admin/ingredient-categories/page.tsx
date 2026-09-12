@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState } from "react";
 import { useIngredientCategories } from "@/hooks/catalog/useIngredientCategory";
 import { IngredientCategoryPagination } from "./IngredientCategoryPagination";
@@ -41,25 +40,18 @@ export default function IngredientCategoriesPage() {
     setSubmittedKeyword(keyword.trim());
   }
 
-
   return (
     <div className="space-y-6">
-
-      <IngredientCategoryHeader
-        onCreate={() => { }}
-      />
+      <IngredientCategoryHeader onCreate={() => {}} />
 
       <IngredientCategoryStats
         totalItems={categories?.totalItems}
-        activeItems={
-          items.filter((item) => !item.isDeleted).length
-        }
+        activeItems={items.filter((item) => !item.isDeleted).length}
         currentPage={categories?.indexPage ?? page}
         totalPages={totalPages}
       />
 
       <section className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-
         <IngredientCategoryToolbar
           keyword={keyword}
           onKeywordChange={setKeyword}
@@ -73,23 +65,16 @@ export default function IngredientCategoriesPage() {
           onRetry={refetch}
         /> */}
 
-        <IngredientCategoryTable
-          items={items}
-        />
+        <IngredientCategoryTable items={items} />
 
         <IngredientCategoryPagination
           totalItems={categories?.totalItems}
           page={page}
           totalPages={totalPages}
           isLoading={isLoading}
-          onPrevious={() =>
-            setPage((current) => current - 1)
-          }
-          onNext={() =>
-            setPage((current) => current + 1)
-          }
+          onPrevious={() => setPage((current) => current - 1)}
+          onNext={() => setPage((current) => current + 1)}
         />
-
       </section>
     </div>
   );

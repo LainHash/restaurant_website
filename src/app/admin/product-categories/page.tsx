@@ -64,7 +64,7 @@ export default function ProductCategoriesPage() {
           keyword={keyword}
           onKeywordChange={setKeyword}
           onSearch={submitSearch}
-        />
+        />``
 
         {/* <ProductCategoryContent
           error={error}
