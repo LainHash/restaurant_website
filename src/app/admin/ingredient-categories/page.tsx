@@ -1,40 +1,96 @@
-import { ModulePlaceholder } from "@/components/admin/ModulePlaceholder";
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { useIngredientCategories } from "@/hooks/catalog/useIngredientCategory";
+import { IngredientCategoryPagination } from "./IngredientCategoryPagination";
+import { IngredientCategoryToolbar } from "./IngredientCategoryToolbar";
+import { IngredientCategoryStats } from "./IngredientCategoryStas";
+import { IngredientCategoryHeader } from "./IngredientCategoryHeader";
+import { IngredientCategoryTable } from "./IngredientCategoryTable";
+
+const PAGE_SIZE = 10;
+
+function formatDate(value?: string) {
+  if (!value) return "Chưa cập nhật";
+  return new Intl.DateTimeFormat("vi-VN", {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  }).format(new Date(value));
+}
 
 export default function IngredientCategoriesPage() {
+  const [keyword, setKeyword] = useState("");
+  const [submittedKeyword, setSubmittedKeyword] = useState("");
+  const [page, setPage] = useState(1);
+  const { categories, isLoading, error, refetch } = useIngredientCategories({
+    Keyword: submittedKeyword || undefined,
+    Page: page,
+    PageSize: PAGE_SIZE,
+    SortField: "Name",
+    SortDirection: "Asc",
+  });
+
+  const items = categories?.data ?? [];
+  const totalPages = categories?.totalPages ?? 1;
+
+  function submitSearch(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    setPage(1);
+    setSubmittedKeyword(keyword.trim());
+  }
+
+
   return (
-    <ModulePlaceholder
-      title="Loại Nguyên liệu (IngredientCategories)"
-      description="Phân loại nguyên vật liệu đầu vào (Thịt tươi sống, Hải sản, Rau củ quả, Gia vị, Đồ khô, Bao bì đóng gói)."
-      actionLabel="Thêm Nhóm Nguyên Liệu"
-      endpoints={[
-        { method: "GET", path: "/api/IngredientCategories", description: "Lấy danh sách phân loại nguyên liệu có phân trang" },
-        { method: "POST", path: "/api/IngredientCategories", description: "Tạo phân loại nguyên liệu mới" },
-        { method: "GET", path: "/api/IngredientCategories/{id}", description: "Xem chi tiết phân loại" },
-        { method: "PUT", path: "/api/IngredientCategories/{id}", description: "Cập nhật phân loại" },
-        { method: "DELETE", path: "/api/IngredientCategories/{id}", description: "Xóa phân loại" },
-        { method: "GET", path: "/api/IngredientCategories/by-name/{name}", description: "Tra cứu phân loại theo tên" },
-        { method: "PATCH", path: "/api/IngredientCategories/{id}/restore", description: "Khôi phục phân loại đã xóa" },
-      ]}
-      columns={[
-        { header: "Tên nhóm", accessor: "name" },
-        { header: "Mô tả", accessor: "description" },
-        { header: "Số loại nguyên liệu", accessor: "ingredientCount" },
-        { header: "Trạng thái", accessor: "status" },
-      ]}
-      sampleRows={[
-        {
-          name: "Thịt tươi sống",
-          description: "Bò, heo, cừu, gia cầm nhập khẩu và nội địa",
-          ingredientCount: "18 mặt hàng",
-          status: "Hoạt động",
-        },
-        {
-          name: "Gia vị & Bơ sữa",
-          description: "Các loại sốt, bơ, phô mai, dầu ăn hảo hạng",
-          ingredientCount: "32 mặt hàng",
-          status: "Hoạt động",
-        },
-      ]}
-    />
+    <div className="space-y-6">
+
+      <IngredientCategoryHeader
+        onCreate={() => { }}
+      />
+
+      <IngredientCategoryStats
+        totalItems={categories?.totalItems}
+        activeItems={
+          items.filter((item) => !item.isDeleted).length
+        }
+        currentPage={categories?.indexPage ?? page}
+        totalPages={totalPages}
+      />
+
+      <section className="overflow-hidden rounded-xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+
+        <IngredientCategoryToolbar
+          keyword={keyword}
+          onKeywordChange={setKeyword}
+          onSearch={submitSearch}
+        />
+
+        {/* <IngredientCategoryContent
+          error={error}
+          isLoading={isLoading}
+          items={items}
+          onRetry={refetch}
+        /> */}
+
+        <IngredientCategoryTable
+          items={items}
+        />
+
+        <IngredientCategoryPagination
+          totalItems={categories?.totalItems}
+          page={page}
+          totalPages={totalPages}
+          isLoading={isLoading}
+          onPrevious={() =>
+            setPage((current) => current - 1)
+          }
+          onNext={() =>
+            setPage((current) => current + 1)
+          }
+        />
+
+      </section>
+    </div>
   );
 }

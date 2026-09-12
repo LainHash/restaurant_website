@@ -1,18 +1,18 @@
-import { ProductCategoryResponse } from "@/types/api";
+import { IngredientCategoryResponse } from "@/types/api";
 import Link from "next/link";
 
-interface ProductCategoryRowProps {
-    category: ProductCategoryResponse;
+interface IngredientCategoryRowProps {
+    category: IngredientCategoryResponse;
 }
 
-export function ProductCategoryRow({
+export function IngredientCategoryRow({
     category,
-}: ProductCategoryRowProps) {
+}: IngredientCategoryRowProps) {
     return (
         <tr className="group transition hover:bg-emerald-50/40 dark:hover:bg-emerald-950/10">
             <td className="px-5 py-4">
                 <Link
-                    href={`/admin/product-categories/${category.id}`}
+                    href={`/admin/ingredient-categories/${category.id}`}
                     className="font-semibold text-zinc-900 group-hover:text-emerald-700 dark:text-zinc-100 dark:group-hover:text-emerald-400"
                 >
                     {category.name || "Chưa đặt tên"}
