@@ -50,7 +50,7 @@ export interface IngredientFilterParams {
   BrandId?: string;
   Keyword?: string;
   SortField?: SortField;
-  Direction?: SortDirection;
+  SortDirection?: SortDirection;
   Page?: number;
   PageSize?: number;
 }
